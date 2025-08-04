@@ -1,0 +1,44 @@
+inherit:
+    - base.yaml
+
+training:
+    task: ode_ivp_case2vec
+    data: ode_ivp_case2
+    curriculum:
+        dims:
+            end: 50
+            inc: 3
+            interval: 2000
+            start: 5
+        points:
+            end: 41
+            inc: 2
+            interval: 2000
+            start: 11
+        lr:
+            schedule_type: "four_stage"
+            start: 0.000001   # 1e-6
+            firstup_end: 10000
+            highlearn: 0.0003  # 3e-4
+            highlearn_end: 50000
+            downlearn_end: 150000 
+            lowlearn: 0.00001  # 1e-5
+            steadylearn: 0.00001  # 1e-5
+    If_enhanced_loss: true
+    keep_every_steps: 50000
+    train_steps: 600001
+    If_use_h : False
+    If_evalloss_in_train : True
+    eval_loss_per_steps : 100
+    num_eval_tasks : 1
+    
+model:
+    n_dims: 50
+
+out_dir: ../models12/ode_ivp_case2fin_valid_layer12  #
+
+wandb:
+    name: "ode_ivp_case2fin_valid_layer12_01"
+
+set_device: 0
+# nohup python src/train.py --config src/conf/ode_ivp_case2fin_valid_layer12.yaml >> running_logs/ode_ivp_case2fin_valid_layer12_01.log 2>&1 &

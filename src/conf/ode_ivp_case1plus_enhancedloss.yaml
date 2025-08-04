@@ -1,0 +1,28 @@
+inherit:
+    - base.yaml
+
+training:
+    task: ode_ivp_case1plus
+    data: ode_ivp_case1plus
+    curriculum:
+        points:
+            start: 11
+            end: 41
+            inc: 2
+            interval: 2000
+    learning_rate: 0.0001
+    keep_every_steps: 50000
+    train_steps: 200001
+    If_enhanced_loss: true
+
+set_device: 1
+
+out_dir: ../models12/ode_ivp_case1plus_enhancedloss  #
+
+wandb:
+    name: "ode_ivp_case1_plus_enhancedloss_run1"
+# eval:
+    # evalmode: false
+# case2 设置更大范围的t输入 [t_e_st,t_e_ed]=[1,2]
+# 可否设置输出训练出 不同的 y 的输出？
+# nohup python src/train.py --config src/conf/ode_ivp_case1plus_enhancedloss.yaml >> running_logs/ode_ivp_case1plus_enhancedloss.log 2>&1 &

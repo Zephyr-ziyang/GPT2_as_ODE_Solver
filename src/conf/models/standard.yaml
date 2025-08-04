@@ -1,0 +1,10 @@
+model:
+    family: gpt2
+    n_embd: 256
+    n_layer: 12
+    n_head: 8
+# - **`n_dims`**：输入数据的特征维度。
+# - **`n_positions`** ：上下文中点的最大数量。
+# - **`n_embd`**：嵌入维度
+# - **`n_layer`**：Transformer层的数量。
+# - **`n_head`**：多头注意力机制的头数。

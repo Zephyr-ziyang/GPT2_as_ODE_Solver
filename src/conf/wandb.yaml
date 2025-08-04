@@ -1,0 +1,5 @@
+wandb:
+    project: ode_training
+    entity: baojian-fudan-university
+    notes: ziyang_test
+    log_every_steps: 100

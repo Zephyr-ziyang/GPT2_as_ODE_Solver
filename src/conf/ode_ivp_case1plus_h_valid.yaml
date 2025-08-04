@@ -1,0 +1,39 @@
+inherit:
+    - base.yaml
+
+training:
+    task: ode_ivp_case1plus
+    data: ode_ivp_case1plus
+    curriculum:
+        points:
+            start: 11
+            end: 41
+            inc: 2
+            interval: 2000
+        dims:
+            start: 5
+            end: 50
+            inc: 3
+            interval: 2000
+    learning_rate: 0.0001
+    If_enhanced_loss: true
+    keep_every_steps: 50000
+    train_steps: 200001
+    If_use_h: true
+    If_evalloss_in_train : True
+    eval_loss_per_steps : 100
+    num_eval_tasks : 200
+
+model:
+    n_dims: 50
+
+out_dir: ../models12/ode_ivp_case1plus_h_valid  #
+
+wandb:
+    name: "ode_ivp_case1plus_h_valid_run_11"
+
+set_device: 2
+
+# case2 设置更大范围的t输入 [t_e_st,t_e_ed]=[1,2]
+# 可否设置输出训练出 不同的 y 的输出？
+# nohup python src/train.py --config src/conf/ode_ivp_case1plus_h_valid.yaml >> running_logs/ode_ivp_case1plus_h_valid_run_11.log 2>&1 &

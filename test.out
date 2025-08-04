@@ -1,0 +1,59 @@
+nohup: ignoring input
+wandb: W&B API key is configured (use `wandb login --relogin` to force relogin)
+Running with: Quinfig
+-------
+config: src/conf/ode_ivp_case1.yaml
+eval:
+  If_shift_w_distribution: null
+  eval_w_type: add
+inherit:
+- /mnt/data/ziyang/project/src/conf/base.yaml
+model:
+  family: gpt2
+  n_dims: 20
+  n_embd: 256
+  n_head: 8
+  n_layer: 12
+  n_positions: 101
+out_dir: ../models12/ode_ivp_case1
+test_run: false
+training:
+  If_RandomShuffle_2distribution: null
+  If_two_distribution: null
+  batch_size: 64
+  curriculum:
+    dims:
+      end: 20
+      inc: 1
+      interval: 2000
+      start: 5
+    points:
+      end: 41
+      inc: 2
+      interval: 2000
+      start: 11
+  data: ode_ivp_case1
+  keep_every_steps: 100000
+  learning_rate: 1.0e-05
+  num_tasks: null
+  num_training_examples: null
+  resume_id: 24c1872a-7ff7-427f-9d41-ff57d6b7ee1f
+  save_every_steps: 1000
+  task: ode_ivp_case1
+  task_kwargs: {}
+  train_steps: 500001
+  w_distribution1: gaussian
+  w_distribution2: uniform
+  w_type: gaussian
+  weight_decay: 0
+wandb:
+  entity: baojian-fudan-university
+  log_every_steps: 100
+  name: ode_ivp_case1_run3
+  notes: ziyang_test
+  project: in-context-training
+
+wandb: Network error (ConnectTimeout), entering retry loop.
+wandb: Network error (ConnectTimeout), entering retry loop.
+/mnt/data/ziyang/anaconda3/envs/in-context-learning/lib/python3.8/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

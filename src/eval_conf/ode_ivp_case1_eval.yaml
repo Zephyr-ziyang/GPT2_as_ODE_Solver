@@ -1,0 +1,30 @@
+inherit:
+    - base.yaml
+
+training:
+    task: ode_ivp_case1
+    data: ode_ivp_case1
+    curriculum:
+        points:
+            start: 11
+            end: 41
+            inc: 2
+            interval: 2000
+    learning_rate: 0.0001
+eval:
+    evalmode: true
+    evaltype: continuous_output
+    task: ode_ivp_case1
+    data: ode_ivp_case1
+    batch_size: 64
+    n_dims: 20
+    n_points: 41
+
+
+out_dir: ../models12/ode_ivp_case1  #
+
+wandb:
+    name: "eval_mode"
+
+trained_id: 24c1872a-7ff7-427f-9d41-ff57d6b7ee1f
+# python src/evaluate_ode.py --config src/conf/ode_ivp_case1_eval.yaml >> running_logs/ode_ivp_case1_eval.log 2>&1 &

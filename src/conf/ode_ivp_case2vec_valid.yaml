@@ -1,0 +1,41 @@
+inherit:
+    - base.yaml
+
+training:
+    task: ode_ivp_case2vec
+    data: ode_ivp_case2
+    curriculum:
+        dims:
+            end: 50
+            inc: 3
+            interval: 2000
+            start: 5
+        points:
+            end: 41
+            inc: 2
+            interval: 2000
+            start: 11
+        lr:
+            start : 0.0001
+            steadylearn : 0.0001
+            
+    # learning_rate: 0.0001
+    If_enhanced_loss: true
+    keep_every_steps: 50000
+    train_steps: 300001
+    If_use_h : False
+    If_evalloss_in_train : True
+    eval_loss_per_steps : 100
+    num_eval_tasks : 1
+    resume_id : 23aafa8d-fd90-4d39-b266-527a8e27657b
+    
+model:
+    n_dims: 50
+
+out_dir: ../models12/ode_ivp_case2vec_valid  #
+
+wandb:
+    name: "ode_ivp_case2_valid_run_03"
+
+set_device: 0
+# nohup python src/train.py --config src/conf/ode_ivp_case2vec_valid.yaml >> running_logs/ode_ivp_case2_valid_run_03_continue.log 2>&1 &

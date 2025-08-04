@@ -1,0 +1,29 @@
+inherit:
+    - base.yaml
+
+training:
+
+    task: linear_regression   # 仍然属于 linear  task 减少代码改动
+    train_steps: 1000001
+    If_two_distribution: True
+    If_RandomShuffle_2distribution: True
+    w_distribution1: "gaussian"
+    w_distribution2: "uniform"
+    curriculum:
+        points:
+            start: 11
+            end: 41
+            inc: 2
+            interval: 2000
+    learning_rate: 0.0003
+    resume_id: RandomShuffle_2w_distribution
+
+
+eval:
+    If_shift_w_distribution: True #  eval 是否从 w1 + w2 中sample
+    eval_w_type: "add" #  w1 + w2
+
+out_dir: ../models12/linear_regression_RandomShuffle_2w_distribution # 输出路径改变
+
+wandb:
+    name: "linear_regression_two_distribution_RandomShuffle" # wandb name 改变

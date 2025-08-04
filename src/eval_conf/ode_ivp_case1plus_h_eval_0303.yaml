@@ -1,0 +1,44 @@
+inherit:
+    - base.yaml
+
+training:
+    task: ode_ivp_case1plus
+    data: ode_ivp_case1plus
+    curriculum:
+        points:
+            start: 11
+            end: 41
+            inc: 2
+            interval: 2000
+        dims:
+            start: 5
+            end: 50
+            inc: 3
+            interval: 2000
+
+model:
+    n_dims: 50
+eval:
+    task: ode_ivp_case1plus
+    data: ode_ivp_case1plus
+    evaltype: continuous_output
+    batch_size: 64
+    n_dims: 50
+    n_points: 41
+    If_use_h: true
+    draw_diff: true
+    draw_steperr: true
+    draw_relativeh_steperr: true
+    err_vector_norm : true
+out_dir: ../models12/ode_ivp_case1plus_enhancedloss  #
+
+wandb:
+    name: "ode_ivp_case1plus_enhancedloss_run_0303"
+    
+trained_id: ac0443e1-12d4-4fe5-9f23-998216b35556
+
+set_device: 0
+
+# case2 设置更大范围的t输入 [t_e_st,t_e_ed]=[1,2]
+# 可否设置输出训练出 不同的 y 的输出？
+# python src/evaluate_ode_old.py --config src/conf/ode_ivp_case1plus_h_eval_0319.yaml >> running_logs/ode_ivp_case1plus_h_eval_0319.log 2>&1 &
